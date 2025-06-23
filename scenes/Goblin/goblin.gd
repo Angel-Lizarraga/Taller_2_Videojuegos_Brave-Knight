@@ -59,6 +59,8 @@ func _on_detection_area_exited(_area: Area2D) -> void:
 	current_state = ENEMY_STATES.PATROL
 	if patrol_timer.is_stopped() :
 		patrol_timer.start()
+	if not throwTimer.is_stopped() :
+		throwTimer.stop()
 
 
 func _on_animation_finished() -> void:

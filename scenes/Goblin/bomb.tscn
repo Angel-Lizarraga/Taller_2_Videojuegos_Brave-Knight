@@ -158,25 +158,27 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f6mtt"]
-radius = 9.0
+radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bn0mr"]
-radius = 26.0
+radius = 51.0098
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ugyeq"]
-radius = 11.0
+radius = 19.0
 
 [node name="Bomb" type="RigidBody2D"]
 disable_mode = 1
+collision_layer = 0
 physics_material_override = SubResource("PhysicsMaterial_ugyeq")
 script = ExtResource("1_bn0mr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3, -2)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_ta2tl")
-animation = &"pre_explode"
+animation = &"explosion"
 autoplay = "ignited"
+frame = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_f6mtt")
