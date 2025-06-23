@@ -44,18 +44,18 @@ func _on_patrol_timer_timeout() -> void:
 		direction = Vector2.RIGHT
 		anim_sprite2D.flip_h = false
 
-func _on_detection_area_entered(area: Area2D) -> void:
+func _on_detection_area_entered(_area: Area2D) -> void:
 	if current_state != ENEMY_STATES.DEATH:
 		current_state = ENEMY_STATES.FOLLOWING_PLAYER
 		print("current enemy state ", current_state)
 
 
-func _on_detection_area_exited(area: Area2D) -> void:
+func _on_detection_area_exited(_area: Area2D) -> void:
 	current_state = ENEMY_STATES.RETURNING
 	print("current enemy state ", current_state)
 
 
-func _on_hitbox_area_entered(area: Area2D) -> void:
+func _on_hitbox_area_entered(_area: Area2D) -> void:
 	hp -= player_ref.strength
 	hitbox.monitorable = false
 	if hp <= 0 :

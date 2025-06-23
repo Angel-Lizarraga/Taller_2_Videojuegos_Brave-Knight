@@ -246,7 +246,6 @@ autostart = true
 one_shot = true
 
 [node name="ThrowTimer" type="Timer" parent="." index="7"]
-wait_time = 2.0
 one_shot = true
 
 [node name="Marker2D" type="Marker2D" parent="." index="8"]
@@ -257,3 +256,4 @@ scale = Vector2(0.333333, 0.333333)
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_entered"]
 [connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_exited"]
 [connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]
+[connection signal="timeout" from="ThrowTimer" to="." method="_on_throw_timeout"]

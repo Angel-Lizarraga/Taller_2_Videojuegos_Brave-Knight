@@ -175,9 +175,20 @@ frame_progress = 1.0
 shape = SubResource("CircleShape2D_f6mtt")
 
 [node name="hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CircleShape2D_bn0mr")
 debug_color = Color(0.864864, 0.339923, 0.292499, 0.42)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="animTimer1" type="Timer" parent="."]
+one_shot = true
+
+[node name="animTimer2" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="animTimer1" to="." method="_on_anim_timer_1_timeout"]
+[connection signal="timeout" from="animTimer2" to="." method="_on_anim_timer_2_timeout"]

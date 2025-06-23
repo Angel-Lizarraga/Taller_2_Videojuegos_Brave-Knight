@@ -48,13 +48,13 @@ func _on_patrol_timer_timeout() -> void:
 		marker_ref.position.x = 26.0
 
 
-func _on_detection_area_entered(area: Area2D) -> void:
+func _on_detection_area_entered(_area: Area2D) -> void:
 	if(current_state != ENEMY_STATES.DEATH) :
 		current_state = ENEMY_STATES.FOLLOWING_PLAYER
 		anim_sprite2D.play("throw")
 
 
-func _on_detection_area_exited(area: Area2D) -> void:
+func _on_detection_area_exited(_area: Area2D) -> void:
 	anim_sprite2D.play("idle");
 	current_state = ENEMY_STATES.PATROL
 	if patrol_timer.is_stopped() :
@@ -70,7 +70,7 @@ func _on_animation_finished() -> void:
 		queue_free()
 
 
-func _on_hitbox_area_entered(area: Area2D) -> void:
+func _on_hitbox_area_entered(_area: Area2D) -> void:
 	hp-= player_ref.strength
 	set_deferred("monitoring", false)
 	if hp<=0 :
@@ -87,3 +87,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		tween.tween_property(anim_sprite2D,"self_modulate", Color(1,1,1,1),0.25)
 		tween.tween_property(anim_sprite2D,"self_modulate", Color(1,0,0,1),0.25)
 		tween.tween_property(anim_sprite2D,"self_modulate", Color(1,1,1,1),0.25)
+
+
+func _on_throw_timeout() -> void:
+	anim_sprite2D.play("throw")
