@@ -8,7 +8,7 @@ class_name Player
 enum PLAYER_STATE {IDLE, RUN, ATTACK, JUMP, HIT, FALL, DEATH}
 
 @export var movement_speed = 10000.0
-@export var jump_speed = 27000.0
+@export var jump_speed = 40000.0
 @export var gravity = 500.0
 
 

@@ -242,9 +242,6 @@ shape = SubResource("CircleShape2D_iv4bs")
 [node name="PatrolTimer" parent="." index="5"]
 autostart = true
 
-[node name="InvincibleTimer" parent="." index="6"]
-one_shot = true
-
 [node name="ThrowTimer" type="Timer" parent="." index="7"]
 one_shot = true
 

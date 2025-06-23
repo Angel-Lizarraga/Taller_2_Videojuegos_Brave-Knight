@@ -164,6 +164,7 @@ radius = 9.0
 radius = 18.0278
 
 [node name="Bomb" type="RigidBody2D"]
+scale = Vector2(1.5, 1.5)
 physics_material_override = SubResource("PhysicsMaterial_ugyeq")
 script = ExtResource("1_bn0mr")
 
@@ -176,13 +177,16 @@ frame = 9
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_f6mtt")
 
 [node name="hitbox" type="Area2D" parent="."]
+scale = Vector2(1.5, 1.5)
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_bn0mr")
 debug_color = Color(0.864864, 0.339923, 0.292499, 0.42)
 
