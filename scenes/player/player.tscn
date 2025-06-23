@@ -344,7 +344,6 @@ size = Vector2(36.9112, 47.802)
 height = 38.0
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(-3, -1)
 collision_layer = 2
 script = ExtResource("1_qek5x")
 movement_speed = 18000.0
