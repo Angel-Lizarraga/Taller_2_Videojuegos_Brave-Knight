@@ -7,12 +7,13 @@ extends RigidBody2D
 
 func _ready() -> void:
 	set_lock_rotation_enabled(true)
+	hitbox.visible = false
+	hitbox.monitorable = false
+	hitbox.monitoring = false
 
 func setup_bomb(playerPos : Vector2, isFlipped: bool) -> void :
 	animSprite.flip_h = isFlipped
 	apply_impulse(to_local(playerPos))
-	hitbox.visible = false
-	hitbox.monitorable = false
 
 func start_timer() -> void :
 	animTimer1.start()
@@ -24,11 +25,24 @@ func _on_anim_timer_1_timeout() -> void:
 
 
 func _on_anim_timer_2_timeout() -> void:
+	blowUp()
+	
+func blowUp() -> void :
 	animSprite.play("explosion")
 	hitbox.visible = true
 	hitbox.monitorable = true
+	hitbox.monitoring = true
 	
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animSprite.animation == "explosion" :
 		queue_free()
+
+
+func _on_contact_area_area_entered(area: Area2D) -> void:
+	print("no toque")
+	if not animTimer1.is_stopped() :
+		animTimer1.stop()
+	if not animTimer2.is_stopped() :
+		animTimer2.stop()
+	blowUp()

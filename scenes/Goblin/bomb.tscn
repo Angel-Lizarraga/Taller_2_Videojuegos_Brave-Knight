@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://4pkmvqq2x240"]
+[gd_scene load_steps=27 format=3 uid="uid://4pkmvqq2x240"]
 
 [ext_resource type="Script" uid="uid://cdejc4j41utv7" path="res://scenes/Goblin/bomb.gd" id="1_bn0mr"]
 [ext_resource type="Texture2D" uid="uid://xfwdt0dxhl5o" path="res://assets/goblin/Bomb_sprite.png" id="1_f6mtt"]
@@ -163,17 +163,20 @@ radius = 9.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_bn0mr"]
 radius = 26.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ugyeq"]
+radius = 11.0
+
 [node name="Bomb" type="RigidBody2D"]
+disable_mode = 1
 physics_material_override = SubResource("PhysicsMaterial_ugyeq")
 script = ExtResource("1_bn0mr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3, -2)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_ta2tl")
-animation = &"explosion"
+animation = &"pre_explode"
 autoplay = "ignited"
-frame = 9
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_f6mtt")
@@ -193,6 +196,15 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="contactArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="contactArea"]
+shape = SubResource("CircleShape2D_ugyeq")
+debug_color = Color(0.842411, 0.00108082, 0.917675, 0.42)
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="animTimer1" to="." method="_on_anim_timer_1_timeout"]
 [connection signal="timeout" from="animTimer2" to="." method="_on_anim_timer_2_timeout"]
+[connection signal="area_entered" from="contactArea" to="." method="_on_contact_area_area_entered"]
