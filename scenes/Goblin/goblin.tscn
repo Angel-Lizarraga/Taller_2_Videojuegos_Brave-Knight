@@ -200,7 +200,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_23wbc")
 }],
-"loop": true,
+"loop": false,
 "name": &"throw",
 "speed": 8.0
 }]
@@ -221,8 +221,9 @@ script = ExtResource("2_1gaif")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_etlm7")
-animation = &"idle"
+animation = &"throw"
 autoplay = "idle"
+frame = 10
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(-1, 8)
@@ -247,6 +248,10 @@ one_shot = true
 [node name="ThrowTimer" type="Timer" parent="." index="7"]
 wait_time = 2.0
 one_shot = true
+
+[node name="Marker2D" type="Marker2D" parent="." index="8"]
+position = Vector2(26, -4)
+scale = Vector2(0.333333, 0.333333)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_entered"]

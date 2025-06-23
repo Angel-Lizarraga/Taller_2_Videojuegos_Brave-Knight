@@ -5,6 +5,7 @@ var home : Vector2
 var previous_state : ENEMY_STATES
 var gravity = 600
 @onready var throwTimer : Timer = $ThrowTimer
+@onready var marker_ref : Marker2D = $Marker2D
 
 func _ready() -> void:
 	super._ready()
@@ -33,10 +34,18 @@ func calculate_state() -> void :
 				anim_sprite2D.flip_h = false
 			else :
 				anim_sprite2D.flip_h = true
+			if anim_sprite2D.flip_h :
+				marker_ref.position.x = -26.0
+			else :
+				marker_ref.position.x = 26.0
 
 
 func _on_patrol_timer_timeout() -> void:
 	anim_sprite2D.flip_h = !anim_sprite2D.flip_h
+	if anim_sprite2D.flip_h :
+		marker_ref.position.x = -26.0
+	else :
+		marker_ref.position.x = 26.0
 
 
 func _on_detection_area_entered(area: Area2D) -> void:
@@ -54,7 +63,7 @@ func _on_detection_area_exited(area: Area2D) -> void:
 
 func _on_animation_finished() -> void:
 	if(anim_sprite2D.animation == "throw") : 
-		ObjectMaker.create_bomb(anim_sprite2D.flip_h)
+		ObjectMaker.create_bomb(anim_sprite2D.flip_h, player_ref.global_position, marker_ref.global_position)
 		throwTimer.start()
 	if(anim_sprite2D.animation == "death") :
 		current_state = ENEMY_STATES.DEATH
