@@ -1,8 +1,8 @@
 [gd_scene load_steps=35 format=3 uid="uid://bip7e2fvsvs71"]
 
-[ext_resource type="PackedScene" uid="uid://dnbbk0buhld8m" path="res://Scenes/base_enemy/base_enemy.tscn" id="1_kdlw1"]
+[ext_resource type="PackedScene" uid="uid://dnbbk0buhld8m" path="res://scenes/base_enemy/base_enemy.tscn" id="1_kdlw1"]
 [ext_resource type="Script" uid="uid://do0k7jh5hjrg4" path="res://scenes/Goblin/goblin.gd" id="2_1gaif"]
-[ext_resource type="Texture2D" uid="uid://b3ubu6yvgwfiw" path="res://assets/Goblin/Attack3.png" id="2_8qqcm"]
+[ext_resource type="Texture2D" uid="uid://b3ubu6yvgwfiw" path="res://assets/goblin/Attack3.png" id="2_8qqcm"]
 [ext_resource type="Texture2D" uid="uid://bb444iajwckts" path="res://assets/misc/explosion1_1.png" id="3_1gaif"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_etlm7"]

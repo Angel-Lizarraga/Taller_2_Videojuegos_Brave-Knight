@@ -1,7 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://4pkmvqq2x240"]
+[gd_scene load_steps=26 format=3 uid="uid://4pkmvqq2x240"]
 
 [ext_resource type="Script" uid="uid://cdejc4j41utv7" path="res://scenes/Goblin/bomb.gd" id="1_bn0mr"]
-[ext_resource type="Texture2D" uid="uid://xfwdt0dxhl5o" path="res://assets/Goblin/Bomb_sprite.png" id="1_f6mtt"]
+[ext_resource type="Texture2D" uid="uid://xfwdt0dxhl5o" path="res://assets/goblin/Bomb_sprite.png" id="1_f6mtt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ugyeq"]
+bounce = 0.5
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bn0mr"]
 atlas = ExtResource("1_f6mtt")
@@ -161,6 +164,7 @@ radius = 9.0
 radius = 18.0278
 
 [node name="Bomb" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_ugyeq")
 script = ExtResource("1_bn0mr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -181,3 +185,4 @@ shape = SubResource("CircleShape2D_bn0mr")
 debug_color = Color(0.864864, 0.339923, 0.292499, 0.42)
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
