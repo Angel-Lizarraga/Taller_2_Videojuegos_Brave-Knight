@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bciujvxafodnc"]
+
+[ext_resource type="PackedScene" uid="uid://baohngfi20moo" path="res://scenes/player/player.tscn" id="1_8hega"]
+
+[node name="BaseLevel" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_8hega")]
+scale = Vector2(3, 3)
