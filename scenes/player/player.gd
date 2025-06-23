@@ -126,7 +126,10 @@ func flip_player():
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	direction = area.get_parent().velocity.normalized()
+	if (area.get_parent().get_class() == "RigidBody2D"):
+		direction = area.get_parent().linear_velocity.normalized()
+	elif (area.get_parent().get_class() == "CharacterBody2D"):
+		direction = area.get_parent().velocity.normalized()
 	set_state(PLAYER_STATE.HIT)
 	invencible_timer.start()
 	var tween = create_tween()
