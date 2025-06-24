@@ -16,6 +16,7 @@ func _on_timer_timeout() -> void:
 	
 	if timer_out <= 0:
 		timer.stop()
+		SignalManager.on_player_death.emit()
 
 func on_player_hit(lives: int):
 	lives_label.text = "Lives: " + str(lives)
