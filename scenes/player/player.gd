@@ -133,20 +133,23 @@ func flip_player():
 	anim_sprite2D.flip_h = not anim_sprite2D.flip_h
 	attack_collision.position.x *= -1
 
+func player_death():
+	is_alive = false
+	
+	velocity = Vector2.ZERO
+	
+	hitbox.visible = false
+	hitbox.monitorable = false
+	hitbox.monitoring = false
+	
+	set_state(PLAYER_STATE.DEATH)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	hp -= 1
 	SignalManager.on_player_hit.emit(hp)
 	
 	if(hp <= 0):
-		is_alive = false
-		hitbox.visible = false
-		hitbox.monitorable = false
-		hitbox.monitoring = false
-		player_collision.visible = false
-		player_collision.disabled = true
-		
-		set_state(PLAYER_STATE.DEATH)
+		player_death()
 	else:
 		if (area.get_parent().get_class() == "RigidBody2D"):
 			#direction = area.get_parent().linear_velocity.normalized()
