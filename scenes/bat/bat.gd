@@ -46,7 +46,10 @@ func _on_patrol_timer_timeout() -> void:
 
 func _on_detection_area_entered(_area: Area2D) -> void:
 	if current_state != ENEMY_STATES.DEATH:
-		current_state = ENEMY_STATES.FOLLOWING_PLAYER
+		if (player_ref.is_alive):
+			current_state = ENEMY_STATES.FOLLOWING_PLAYER
+		else:
+			current_state = ENEMY_STATES.RETURNING
 		print("current enemy state ", current_state)
 
 

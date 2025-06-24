@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dr150xdwtihyt"]
+
+[ext_resource type="FontFile" uid="uid://bkg10koeivp18" path="res://assets/fonts/Clash_Regular.otf" id="1_bbb04"]
+
+[resource]
+font = ExtResource("1_bbb04")
+font_size = 50
+font_color = Color(0, 0.65098, 0.243137, 1)
+outline_size = 10
+outline_color = Color(0.00392157, 0.4, 0.188235, 1)

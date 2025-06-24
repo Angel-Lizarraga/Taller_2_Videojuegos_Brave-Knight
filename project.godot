@@ -18,6 +18,8 @@ config/icon="uid://mvku1qhb1xic"
 [autoload]
 
 ObjectMaker="*res://scenes/managers/object_maker.gd"
+SignalManager="*res://Singletons/SignalManager.gd"
+GameManager="*res://Singletons/GameManager.gd"
 
 [file_customization]
 

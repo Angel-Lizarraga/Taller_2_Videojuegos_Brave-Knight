@@ -4,21 +4,24 @@ class_name Player
 @onready var anim_sprite2D = $AnimatedSprite2D
 @onready var floor_detector = $FloorDetector
 @onready var floor_detector2 = $FloorContact
+@onready var attack_area : Area2D = $attack_hitbox
+@onready var attack_collision : CollisionShape2D = $%collision_hitbox
+@onready var invencible_timer : Timer = $Invincible
+@onready var hitbox: Area2D = $hitbox
+@onready var player_collision : CollisionShape2D = $player_collision
 
 enum PLAYER_STATE {IDLE, RUN, ATTACK, JUMP, HIT, FALL, DEATH}
 
 @export var movement_speed = 10000.0
 @export var jump_speed = 40000.0
 @export var gravity = 500.0
-
+@export var hp = 3
 
 var current_state : PLAYER_STATE = PLAYER_STATE.IDLE
 
 var is_grounded = false
 var is_attacking = false
-@onready var attack_area : Area2D = $attack_hitbox
-@onready var attack_collision : CollisionShape2D = $%collision_hitbox
-@onready var invencible_timer : Timer = $Invincible
+var is_alive = true
 
 var direction :  Vector2
 var hit_speed : float = 10000
@@ -26,11 +29,12 @@ var strength : int = 1
 
 func _physics_process(delta: float) -> void:
 	get_input(delta)
-	if not is_attacking:
-		if current_state != PLAYER_STATE.HIT:
-			calculate_state()
-		else:
-			velocity = direction * hit_speed * delta
+	if is_alive:
+		if not is_attacking:
+			if current_state != PLAYER_STATE.HIT:
+				calculate_state()
+			else:
+				velocity = direction * hit_speed * delta
 	check_is_on_ground()
 	apply_gravity(delta)
 	move_and_slide()
@@ -42,6 +46,8 @@ func check_is_on_ground():
 		is_grounded = false
 	
 func get_input(delta):
+	if current_state == PLAYER_STATE.DEATH:
+		return
 	if current_state == PLAYER_STATE.HIT:
 		return
 	if(Input.is_action_pressed("move_left")):
@@ -74,7 +80,6 @@ func get_input(delta):
 	if(Input.is_action_just_pressed("attack") and not is_attacking):
 		attack()
 
-		
 func  calculate_state():
 		if(is_grounded):
 			if abs(velocity.x) > 0:
@@ -103,6 +108,8 @@ func  set_state(new_state: PLAYER_STATE):
 				anim_sprite2D.play("attack")
 			PLAYER_STATE.HIT:
 				anim_sprite2D.play("hit")
+			PLAYER_STATE.DEATH:
+				anim_sprite2D.play("death")
 
 				
 func apply_gravity(delta):
@@ -112,6 +119,8 @@ func apply_gravity(delta):
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if(anim_sprite2D.animation == "attack"):
 		reset_states()
+	if(anim_sprite2D.animation == "death"):
+		SignalManager.on_player_death.emit()
 		
 func attack():
 		is_attacking = true
@@ -126,21 +135,33 @@ func flip_player():
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if (area.get_parent().get_class() == "RigidBody2D"):
-		#direction = area.get_parent().linear_velocity.normalized()
-		pass
-	elif (area.get_parent().get_class() == "CharacterBody2D"):
-		direction = area.get_parent().velocity.normalized()
-	set_state(PLAYER_STATE.HIT)
-	invencible_timer.start()
-	var tween = create_tween()
-	tween.tween_property(anim_sprite2D, "self_modulate", Color(1,1,1,0), 0.25)
-	tween.tween_property(anim_sprite2D, "self_modulate", Color(1,1,1,1), 0.25)
-	tween.tween_property(anim_sprite2D, "self_modulate", Color(1,1,1,0), 0.25)
-	tween.tween_property(anim_sprite2D, "self_modulate", Color(1,1,1,1), 0.25)
-	tween.tween_property(anim_sprite2D, "self_modulate", Color(1,1,1,0), 0.25)
-	tween.tween_property(anim_sprite2D, "self_modulate", Color(1,1,1,1), 0.25)
-	print("te estan golpeando")
+	hp -= 1
+	SignalManager.on_player_hit.emit(hp)
+	
+	if(hp <= 0):
+		is_alive = false
+		hitbox.visible = false
+		hitbox.monitorable = false
+		hitbox.monitoring = false
+		player_collision.visible = false
+		player_collision.disabled = true
+		
+		set_state(PLAYER_STATE.DEATH)
+	else:
+		if (area.get_parent().get_class() == "RigidBody2D"):
+			#direction = area.get_parent().linear_velocity.normalized()
+			pass
+		elif (area.get_parent().get_class() == "CharacterBody2D"):
+			direction = area.get_parent().velocity.normalized()
+		set_state(PLAYER_STATE.HIT)
+		invencible_timer.start()
+		var tween = create_tween()
+		tween.tween_property(anim_sprite2D, "self_modulate", Color(1,1,1,0), 0.25)
+		tween.tween_property(anim_sprite2D, "self_modulate", Color(1,1,1,1), 0.25)
+		tween.tween_property(anim_sprite2D, "self_modulate", Color(1,1,1,0), 0.25)
+		tween.tween_property(anim_sprite2D, "self_modulate", Color(1,1,1,1), 0.25)
+		tween.tween_property(anim_sprite2D, "self_modulate", Color(1,1,1,0), 0.25)
+		tween.tween_property(anim_sprite2D, "self_modulate", Color(1,1,1,1), 0.25)
 
 
 func _on_invincible_timeout() -> void:

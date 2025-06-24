@@ -353,10 +353,10 @@ gravity = 1000.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(4, -21)
 sprite_frames = SubResource("SpriteFrames_upxxc")
-animation = &"idle"
+animation = &"death"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="player_collision" type="CollisionShape2D" parent="."]
 position = Vector2(2.75, 0)
 shape = SubResource("RectangleShape2D_qek5x")
 
@@ -383,7 +383,8 @@ debug_color = Color(0.992785, 0, 0.24713, 0.42)
 collision_layer = 2
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+[node name="player_hitbox" type="CollisionShape2D" parent="hitbox"]
+unique_name_in_owner = true
 position = Vector2(3, 0)
 shape = SubResource("CapsuleShape2D_qek5x")
 debug_color = Color(0.513406, 0.576869, 0, 0.42)

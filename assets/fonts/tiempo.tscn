@@ -1,22 +1,33 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnfasf3y2m3kr"]
 
 [ext_resource type="Script" uid="uid://b2j6vy2cy1127" path="res://assets/fonts/tiempo.gd" id="1_1f8gs"]
-[ext_resource type="FontFile" uid="uid://b6nffy3yyvhpy" path="res://assets/fonts/Dalmation-FREE.otf" id="1_qfjex"]
+[ext_resource type="LabelSettings" uid="uid://ch01gesgc1d54" path="res://assets/fonts/tiempo.tres" id="2_30n44"]
+[ext_resource type="LabelSettings" uid="uid://lx7gmyyetm5u" path="res://assets/fonts/lives.tres" id="3_6wcan"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_1f8gs"]
-font = ExtResource("1_qfjex")
-font_size = 50
-
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_1f8gs")
 
 [node name="TimerGame" type="Label" parent="."]
-offset_left = 964.0
-offset_top = 1.0
-offset_right = 1145.0
-offset_bottom = 70.0
+layout_direction = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -181.0
+offset_bottom = 69.0
+grow_horizontal = 0
+size_flags_vertical = 0
 text = "Timer: 150"
-label_settings = SubResource("LabelSettings_1f8gs")
+label_settings = ExtResource("2_30n44")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LivesLabel" type="Label" parent="."]
+offset_right = 181.0
+offset_bottom = 42.0
+size_flags_vertical = 8
+text = "Lives: 3"
+label_settings = ExtResource("3_6wcan")
+vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 

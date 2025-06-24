@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://lx7gmyyetm5u"]
+
+[ext_resource type="FontFile" uid="uid://b6nffy3yyvhpy" path="res://assets/fonts/Dalmation-FREE.otf" id="1_xbts8"]
+
+[resource]
+font = ExtResource("1_xbts8")
+font_size = 40
