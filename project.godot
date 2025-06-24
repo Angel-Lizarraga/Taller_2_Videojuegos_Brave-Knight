@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Brave Knight"
-run/main_scene="uid://c7mumbtl8c1ku"
+run/main_scene="uid://dd34m7bdmqdpv"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://mvku1qhb1xic"
 
@@ -68,6 +68,7 @@ run={
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="DetectionArea"
 2d_physics/layer_5="player_sword"
+2d_physics/layer_6="pitfall"
 
 [rendering]
 
