@@ -16,6 +16,7 @@ var current_state : PLAYER_STATE = PLAYER_STATE.IDLE
 
 var is_grounded = false
 var is_attacking = false
+var hp = 3
 @onready var attack_area : Area2D = $attack_hitbox
 @onready var attack_collision : CollisionShape2D = $%collision_hitbox
 @onready var invencible_timer : Timer = $Invincible
