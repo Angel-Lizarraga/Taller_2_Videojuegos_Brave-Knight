@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnfasf3y2m3kr"]
+
+[ext_resource type="Script" uid="uid://b2j6vy2cy1127" path="res://assets/fonts/tiempo.gd" id="1_1f8gs"]
+[ext_resource type="FontFile" uid="uid://b6nffy3yyvhpy" path="res://assets/fonts/Dalmation-FREE.otf" id="1_qfjex"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1f8gs"]
+font = ExtResource("1_qfjex")
+font_size = 50
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_1f8gs")
+
+[node name="TimerGame" type="Label" parent="."]
+offset_left = 964.0
+offset_top = 1.0
+offset_right = 1145.0
+offset_bottom = 70.0
+text = "Timer: 150"
+label_settings = SubResource("LabelSettings_1f8gs")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

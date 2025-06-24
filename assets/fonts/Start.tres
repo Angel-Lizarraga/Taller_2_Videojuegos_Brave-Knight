@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://xyoe8agl0vw8"]
+
+[ext_resource type="FontFile" uid="uid://c0fw4drdkkkln" path="res://assets/fonts/nomor-1 (1)/Nomor 1/Nomor1DemoRegular.ttf" id="1_5obcl"]
+
+[resource]
+font = ExtResource("1_5obcl")
+font_size = 65
+font_color = Color(0, 0, 0, 1)
