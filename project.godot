@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Brave Knight"
-run/main_scene="uid://bciujvxafodnc"
+run/main_scene="uid://c7mumbtl8c1ku"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://mvku1qhb1xic"
 
