@@ -704,12 +704,29 @@ respawnPoint = NodePath("../Respawn1")
 [node name="Respawn1" type="Marker2D" parent="."]
 position = Vector2(2790, 437)
 
+[node name="Pitfall2" parent="." node_paths=PackedStringArray("respawnPoint") instance=ExtResource("8_5yg0m")]
+position = Vector2(3773, 718)
+scale = Vector2(3.65971, -2.6901)
+respawnPoint = NodePath("../Respawn2")
+
+[node name="Respawn2" type="Marker2D" parent="."]
+position = Vector2(3789, 455)
+scale = Vector2(3.65971, -2.6901)
+
 [node name="Goal" type="Area2D" parent="."]
+position = Vector2(0, 3)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_jnmbr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
 shape = SubResource("SegmentShape2D_dojjm")
+
+[node name="Respawn3" type="Marker2D" parent="."]
+position = Vector2(7513, 232)
+
+[node name="Pitfall3" parent="." node_paths=PackedStringArray("respawnPoint") instance=ExtResource("8_5yg0m")]
+position = Vector2(7528, 637)
+respawnPoint = NodePath("../Respawn3")
 
 [connection signal="area_entered" from="Goal" to="Goal" method="_on_area_entered"]
