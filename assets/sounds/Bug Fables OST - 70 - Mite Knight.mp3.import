@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dqm5jtbffrx2x"
+path="res://.godot/imported/Bug Fables OST - 70 - Mite Knight.mp3-eeb054fa58b561f5f0c92d9cf9f5055c.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Bug Fables OST - 70 - Mite Knight.mp3"
+dest_files=["res://.godot/imported/Bug Fables OST - 70 - Mite Knight.mp3-eeb054fa58b561f5f0c92d9cf9f5055c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
