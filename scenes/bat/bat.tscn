@@ -192,9 +192,6 @@ scale = Vector2(2.31651, -2.30479)
 shape = SubResource("CircleShape2D_u17r4")
 debug_color = Color(1.68458e-06, 0.620844, 0.559151, 0.42)
 
-[node name="NavigationAgent2D" parent="." index="4"]
-debug_enabled = true
-
 [node name="PatrolTimer" parent="." index="5"]
 wait_time = 4.0
 autostart = true
