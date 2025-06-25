@@ -120,7 +120,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if(anim_sprite2D.animation == "attack"):
 		reset_states()
 	if(anim_sprite2D.animation == "death"):
-		SignalManager.on_player_death.emit()
+		SignalManager.on_player_death.emit(0)
 		
 func attack():
 		is_attacking = true

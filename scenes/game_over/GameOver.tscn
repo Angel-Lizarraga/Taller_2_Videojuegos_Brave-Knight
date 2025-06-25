@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dm7b3urk4l527"]
+[gd_scene load_steps=9 format=3 uid="uid://dm7b3urk4l527"]
 
 [ext_resource type="Script" uid="uid://cvo53845ln2mu" path="res://scenes/game_over/game_over.gd" id="1_hybh5"]
 [ext_resource type="LabelSettings" uid="uid://dpedlw85yc4n3" path="res://assets/fonts/GameOver.tres" id="2_hybh5"]
@@ -64,11 +64,28 @@ tracks/0/keys = {
 "values": [Color(0.964706, 0.2, 0.603922, 0.74902), Color(0.996078, 0.603922, 0, 0.490196), Color(0, 0.721569, 0.858824, 1), Color(0.996078, 0.603922, 0, 0.490196), Color(0.964706, 0.2, 0.603922, 0.74902)]
 }
 
+[sub_resource type="Animation" id="Animation_j7ijp"]
+resource_name = "win_apear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/GameOverLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "YOU", "YOU WIn", "YOU WIN 🎆", "YOU WIN 🎆🔥", "YOU WIN 🎆🔥🎆"]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j7ijp"]
 _data = {
 &"RESET": SubResource("Animation_hybh5"),
 &"game_over_apear": SubResource("Animation_b1at3"),
-&"modulate_continue": SubResource("Animation_geo0e")
+&"modulate_continue": SubResource("Animation_geo0e"),
+&"win_apear": SubResource("Animation_j7ijp")
 }
 
 [node name="GameOver" type="CanvasLayer"]
