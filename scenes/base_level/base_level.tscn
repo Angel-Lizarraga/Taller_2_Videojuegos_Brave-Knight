@@ -734,5 +734,6 @@ respawnPoint = NodePath("../Respawn3")
 stream = ExtResource("10_dojjm")
 volume_db = -15.0
 autoplay = true
+parameters/looping = true
 
 [connection signal="area_entered" from="Goal" to="Goal" method="_on_area_entered"]
